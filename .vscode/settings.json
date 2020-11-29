@@ -1,0 +1,20 @@
+{
+  "workbench.colorTheme": "Dracula",
+  "workbench.iconTheme": "material-icon-theme",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2,
+  "window.zoomLevel": 1,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+  },
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+  ]
+}
