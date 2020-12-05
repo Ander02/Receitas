@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 const PublicStackNavigation: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName={PUBLIC_INITIAL_ROUTE_NAME}>
+    <Stack.Navigator >
       {getPublicRoutes((route) => (
         <Stack.Screen
           key={route.name}
