@@ -31,7 +31,7 @@ const CreateReceitaNavigation: React.FC = () => {
         options={{
           title: 'Confirmação',
         }}
-      />
+      />     
     </Stack.Navigator>
   );
 };

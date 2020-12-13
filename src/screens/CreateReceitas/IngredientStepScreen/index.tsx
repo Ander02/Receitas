@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import IngredientItem from '../../../components/IngredientItem';
 
 import { Button } from '../../../components/_commons/Button';
 import Icon from '../../../components/_commons/Icon';
@@ -36,6 +37,7 @@ const IngredientStepScreen: React.FC = () => {
     quantidade: 0,
   });
   const [nomeReceita, setNomeReceita] = useState('');
+  const [descricaoReceita, setDescricaoReceita] = useState('');
 
   const setDefaultReceitaIngredient = () => {
     if (ingredients.length && unidades.length) {
@@ -128,25 +130,13 @@ const IngredientStepScreen: React.FC = () => {
     return (
       <View
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginVertical: 10,
           paddingHorizontal: 20,
         }}
       >
-        <Icon name="circle" color={colors.primary} size={8} />
-        <Text
-          style={{
-            flex: 1,
-            marginLeft: 10,
-          }}
-        >{`${item.quantidade} ${item.unidade.nome} de ${item.ingrediente.name}`}</Text>
-        <Icon
-          size={20}
+        <IngredientItem
+          item={item}
           onPress={() => handleRemoveIngredient(index)}
-          color={colors.grayLight}
-          name="minus"
+          showDeleteItem
         />
       </View>
     );
@@ -155,6 +145,7 @@ const IngredientStepScreen: React.FC = () => {
   const handleNextStep = () => {
     navigation.navigate('ModoDePreparoStep', {
       nomeReceita: nomeReceita,
+      descricaoReceita: descricaoReceita,
       receitaIngredients: receitaIngredients,
       categorias: [categoriaSelecionada],
     });
@@ -181,9 +172,21 @@ const IngredientStepScreen: React.FC = () => {
         }}
       >
         <Input
+          style={{
+            marginBottom: 20,
+          }}
           placeholder={'Nome'}
           value={nomeReceita}
-          onChangeText={async (text) => await setNomeReceita(text)}
+          onChangeText={(text) => setNomeReceita(text)}
+        />
+
+        <Input
+          style={{
+            marginBottom: 20,
+          }}
+          placeholder={'Descrição'}
+          value={descricaoReceita}
+          onChangeText={(text) => setDescricaoReceita(text)}
         />
 
         <Picker
