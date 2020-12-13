@@ -17,9 +17,12 @@ const DetalhesReceitaScreen: React.FC = () => {
   const getReceita = async () => {
     await service
       .get(`/receitas/${params.receitaId}`)
-      .then(({ data }) => setReceita(data));
+      .then(({ data }) => setReceita(data))
+      .catch(e => console.log(e));
   };
 
+
+  
   useEffect(() => {
     if (params.receitaId) {
       getReceita();

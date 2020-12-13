@@ -16,16 +16,10 @@ const ReceitasScreen: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const [receitas, setReceitas] = useState([
-    { id: '', name: 'sahuahsudhs' },
-    { id: '', name: 'sahuahsudhs' },
-    { id: '', name: 'sahuahsudhs' },
-    { id: '', name: 'sahuahsudhs' },
-    { id: '', name: 'sahuahsudhs' },
-  ]);
+  const [receitas, setReceitas] = useState([]);
 
   useEffect(() => {
-    //getReceitas('');
+    getReceitas('');
   }, []);
 
   const getReceitas = async (search: string) => {
@@ -36,12 +30,10 @@ const ReceitasScreen: React.FC = () => {
       r.image =
         'https://www.daninoce.com.br/wp-content/uploads/2020/03/melhor-bolo-de-chocolate-do-mundo.jpg';
     });
-    console.log(response);
     setReceitas(response);
   };
 
   const handleTouch = (id) => {
-    console.log(id);
     navigation.navigate('DetalhesReceitas', { receitaId: id });
   };
 
@@ -77,6 +69,7 @@ const ReceitasScreen: React.FC = () => {
   const listHeader = () => {
     return (
       <Input
+        placeholder="Buscar"
         onChangeText={async (text) => {
           await getReceitas(text);
         }}
@@ -88,6 +81,9 @@ const ReceitasScreen: React.FC = () => {
     <View>
       <FlatList
         ListHeaderComponent={listHeader()}
+        ListHeaderComponentStyle={{
+          margin: 20,
+        }}
         ListEmptyComponent={receitasEmpy}
         data={receitas}
         renderItem={cardReceitas}

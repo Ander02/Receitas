@@ -8,9 +8,10 @@ const StepHeader: React.FC<{ totalSteps: number; currentStep: number }> = ({
   totalSteps,
   currentStep,
 }) => {
-  const renderStep = (colored) => {
+  const renderStep = (colored, i) => {
     return (
       <View
+        key={String(i)}
         style={{
           flex: 1,
           backgroundColor: colored ? colors.primary : colors.grayLight,
@@ -29,8 +30,8 @@ const StepHeader: React.FC<{ totalSteps: number; currentStep: number }> = ({
         width: '100%',
       }}
     >
-      {[...Array(totalSteps).keys()].map((d) =>
-        renderStep(d + 1 <= currentStep)
+      {[...Array(totalSteps).keys()].map((d, i) =>
+        renderStep(d + 1 <= currentStep, i)
       )}
     </View>
   );

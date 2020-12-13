@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "My Squads",
-    "slug": "mysquads",
+    "name": "1,2,3... Tá pronto",
+    "slug": "TaPronto",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,7 @@
       "backgroundColor": "#b9272d"
     },
     "android": {
-      "package": "com.mysquads.mysquads",
+      "package": "com.br.tapronto",
       "versionCode": 1
     },
     "updates": {

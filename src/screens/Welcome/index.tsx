@@ -15,7 +15,7 @@ const WelcomeScreen: React.FC = () => {
       <SafeAreaView>
         <CenterView>
           <Button onPress={() => navigation.navigate('Login')}>
-            <Text> Ir para Login</Text>
+            Ir para Login
           </Button>
         </CenterView>
       </SafeAreaView>

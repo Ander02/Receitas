@@ -26,8 +26,6 @@ const Login: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const { user, token } = useSelector(({ authentication }) => authentication);
-
   const handle_auth = async () => {
     setLoading(true);
 
@@ -61,6 +59,10 @@ const Login: React.FC = () => {
         <TotalWidthView>
           <View>
             <Input
+              style={{
+                marginHorizontal: 20,
+                marginBottom: 10,
+              }}
               onChangeText={(email) =>
                 setAuth((prevAuth) => ({ ...prevAuth, email }))
               }
@@ -68,6 +70,9 @@ const Login: React.FC = () => {
             />
 
             <Input
+              style={{
+                marginHorizontal: 20,
+              }}
               onChangeText={(password) =>
                 setAuth((prevAuth) => ({ ...prevAuth, password }))
               }

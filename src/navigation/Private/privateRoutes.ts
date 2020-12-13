@@ -12,7 +12,7 @@ const routes = {
   DetalhesReceitas: {
     component: DetalhesReceitaScreen,
     name: 'DetalhesReceitas',
-  },
+  }
 };
 
 export function getPrivateRoutes(stackScreen): Array<ReactElement> {
