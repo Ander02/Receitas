@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '../../components/_commons/Icon';
 import ReceitasNavigation from './ReceitasNavigation';
+import colors from '../../utils/styles/colors';
 
 // import { Container } from './styles';
 
@@ -18,7 +19,9 @@ const TabNavigation: React.FC = () => {
         name="Receitas"
         options={{
           title: 'Receitas',
-          tabBarIcon: (props) => <Icon name={'user'} {...props} />,
+          tabBarIcon: (props) => (
+            <Icon name={'book'} {...props} color={colors.primary} />
+          ),
         }}
         component={ReceitasNavigation}
       />

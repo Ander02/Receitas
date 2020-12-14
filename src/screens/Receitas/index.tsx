@@ -22,13 +22,22 @@ const ReceitasScreen: React.FC = () => {
     getReceitas('');
   }, []);
 
+  const images = [
+    'https://craftlog.com/m/i/2834256=s1280=h960',
+    'https://img.itdg.com.br/tdg/images/recipes/000/000/876/324587/324587_original.jpg?mode=crop&width=710&height=400',
+    'https://staticr1.blastingcdn.com/media/photogallery/2019/6/23/660x290/b_1200x680/bolo-de-brigadeiro-custuma-ser-um-sucesso-entre-as-pessoas-imagem-blasting-news_2283435.jpg',
+    'https://s2.glbimg.com/OPM_PH9YxzVRUOqaCH4el6jQ3iE=/0x0:1280x960/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/y/1/BWBqK7Qtq2ODuC8wiuFg/sorvete-de-chocolate-cremoso-3.jpg',
+    'https://www.oetker.com.br/Recipe/Recipes/oetker.com.br/br-pt/dessert/image-thumb__40064__RecipeDetail/sorvete-de-chantilly.jpg',
+  ];
+
   const getReceitas = async (search: string) => {
     const response = await service
       .get(`/receitas?search=${search}`)
       .then(({ data }) => data);
     response.forEach((r) => {
       r.image =
-        'https://www.daninoce.com.br/wp-content/uploads/2020/03/melhor-bolo-de-chocolate-do-mundo.jpg';
+        r.imageUri ||
+        'https://www.receitasnestle.com.br/images/default-source/recipes/196-ovo-frito-receitas-nestle.jpg';
     });
     setReceitas(response);
   };
@@ -45,20 +54,50 @@ const ReceitasScreen: React.FC = () => {
     const item = receita.item;
 
     return (
-      <TouchableOpacity
-        key={item.id}
-        activeOpacity={0.9}
-        onPress={() => handleTouch(item.id)}
+      <View
+        style={{
+          marginBottom: 20,
+        }}
       >
-        <Image
-          style={{ width: 400, height: 200 }}
-          source={{
-            uri: item.image,
-          }}
-        />
-        <Text> {item.nome} </Text>
-        <Text> {'Tempo de Preparo ' + item.tempoPreparo} </Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          key={item.id}
+          activeOpacity={0.9}
+          onPress={() => handleTouch(item.id)}
+        >
+          <Image
+            style={{ width: 400, height: 200 }}
+            source={{
+              uri: item.image,
+            }}
+          />
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: 10,
+              justifyContent: 'space-between',
+              alignContent: 'center',
+            }}
+          >
+            <Text> {item.nome} </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+              }}
+            >
+              <Icon name="clock" color={colors.primary} size={16} />
+              <Text
+                style={{
+                  marginLeft: 5,
+                }}
+              >
+                {item.tempoPreparo + 'min'}
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   };
 
@@ -87,6 +126,9 @@ const ReceitasScreen: React.FC = () => {
         ListEmptyComponent={receitasEmpy}
         data={receitas}
         renderItem={cardReceitas}
+        style={{
+          paddingHorizontal: 20,
+        }}
         keyExtractor={(item) => item.id}
       />
       <TouchableOpacity

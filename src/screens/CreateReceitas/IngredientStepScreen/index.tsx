@@ -300,13 +300,12 @@ const IngredientStepScreen: React.FC = () => {
 
               <View
                 style={{
-                  flexDirection: 'row',
+                  flexDirection: 'row-reverse',
                 }}
               >
                 <Picker
                   style={{
                     flex: 1,
-                    marginRight: 20,
                     backgroundColor: colors.light,
                   }}
                   selectedValue={receitaIngredient?.unidade?.id}
@@ -323,6 +322,7 @@ const IngredientStepScreen: React.FC = () => {
                 <Input
                   style={{
                     width: 100,
+                    marginRight: 20,
                   }}
                   keyboardType="numeric"
                   placeholder={'Qtd'}
